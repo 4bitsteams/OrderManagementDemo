@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.DAL", "Orde
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.BLL", "OrderManagement.BLL\OrderManagement.BLL.csproj", "{BC23EB76-AD8B-4D71-8506-002BBF55520B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Entity", "OrderManagement.Entity\OrderManagement.Entity.csproj", "{F62DF201-0616-41E9-B9B2-BF66F706AD40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BC23EB76-AD8B-4D71-8506-002BBF55520B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC23EB76-AD8B-4D71-8506-002BBF55520B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC23EB76-AD8B-4D71-8506-002BBF55520B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F62DF201-0616-41E9-B9B2-BF66F706AD40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F62DF201-0616-41E9-B9B2-BF66F706AD40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F62DF201-0616-41E9-B9B2-BF66F706AD40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F62DF201-0616-41E9-B9B2-BF66F706AD40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
