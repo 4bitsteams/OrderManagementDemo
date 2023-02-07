@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.Entity", "O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.IOC", "OrderManagement.IOC\OrderManagement.IOC.csproj", "{381D5E12-5543-4D0A-866C-3600AA7E84C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderManagement.WebApi", "OrderManagement.WebApi\OrderManagement.WebApi.csproj", "{EF98B9DE-E13D-4C38-BF6C-2EE221EABD2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{381D5E12-5543-4D0A-866C-3600AA7E84C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{381D5E12-5543-4D0A-866C-3600AA7E84C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{381D5E12-5543-4D0A-866C-3600AA7E84C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF98B9DE-E13D-4C38-BF6C-2EE221EABD2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF98B9DE-E13D-4C38-BF6C-2EE221EABD2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF98B9DE-E13D-4C38-BF6C-2EE221EABD2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF98B9DE-E13D-4C38-BF6C-2EE221EABD2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
