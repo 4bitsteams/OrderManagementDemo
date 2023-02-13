@@ -8,7 +8,7 @@ namespace OrderManagementViewModel.ViewModels.Common
 {
     public class SearchModel
     {
-        public string SearchText { get; set; }
+        public string? SearchText { get; set; }
 
         public int Page { get; set; }
 
@@ -16,7 +16,7 @@ namespace OrderManagementViewModel.ViewModels.Common
 
         public bool ShowPageSizes { get; set; }
 
-        public string Sort { get; set; }
+        public string? Sort { get; set; }
 
         public string SortColumn
         {
