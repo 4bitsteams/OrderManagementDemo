@@ -13,7 +13,7 @@ namespace OrderManagement.IOC.DependencyInjection
             services.AddDbContext<OrderDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                 b => b.MigrationsAssembly(typeof(OrderDbContext).Assembly.FullName)), ServiceLifetime.Transient);
 
-            services.AddScoped<IOrderDbContext>(provider =>provider.GetService<OrderDbContext>());
+            //services.AddScoped<IOrderDbContext>(provider =>provider.GetService<OrderDbContext>());
 
             return services;
         }

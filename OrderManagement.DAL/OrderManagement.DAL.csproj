@@ -14,10 +14,12 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2" />
+    <PackageReference Include="System.DirectoryServices" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\OrderManagement.Entity\OrderManagement.Entity.csproj" />
+    <ProjectReference Include="..\OrderManagementViewModel\OrderManagementViewModel.csproj" />
   </ItemGroup>
 
 </Project>

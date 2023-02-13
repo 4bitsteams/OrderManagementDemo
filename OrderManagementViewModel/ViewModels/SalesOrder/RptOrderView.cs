@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrderManagementViewModel.ViewModels.SalesOrder
 {
-    public  class OrderCreateViewModel
+    public class RptOrderView
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public Boolean IsActive { get; set; }
     }
 }
