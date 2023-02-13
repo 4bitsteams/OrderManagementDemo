@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OrderManagement.BLL.IManager.Common;
+using OrderManagement.BLL.Manager.Common;
 using OrderManagement.DAL.ApplicationDbContext;
 
 namespace OrderManagement.IOC.DependencyInjection
@@ -14,6 +16,8 @@ namespace OrderManagement.IOC.DependencyInjection
                 b => b.MigrationsAssembly(typeof(OrderDbContext).Assembly.FullName)), ServiceLifetime.Transient);
 
             //services.AddScoped<IOrderDbContext>(provider =>provider.GetService<OrderDbContext>());
+
+            services.AddScoped<IQueryDataDictionaryManager, QueryDataDictionaryManager>();
 
             return services;
         }

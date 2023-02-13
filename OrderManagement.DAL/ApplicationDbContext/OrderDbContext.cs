@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OrderManagement.Entity.Models;
+using OrderManagementViewModel.ViewModels.Common;
 
 namespace OrderManagement.DAL.ApplicationDbContext
 {
@@ -36,5 +37,6 @@ namespace OrderManagement.DAL.ApplicationDbContext
         }
 
         public DbSet<Order> Orders { get; set; }
+        public DbSet<QueryDataDictionary> QueryDataDictionary { get; set; }
     }
 }

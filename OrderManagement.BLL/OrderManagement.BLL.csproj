@@ -7,8 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="IManager\" />
-    <Folder Include="Manager\" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OrderManagement.DAL\OrderManagement.DAL.csproj" />
+    <ProjectReference Include="..\OrderManagement.Model.Extention\OrderManagement.Model.Extention.csproj" />
+    <ProjectReference Include="..\OrderManagementViewModel\OrderManagementViewModel.csproj" />
   </ItemGroup>
 
 </Project>
