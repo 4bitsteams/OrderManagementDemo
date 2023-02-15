@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using OrderManagement.BLL.IManager;
+using OrderManagement.BLL.IManager.Common;
 using OrderManagement.DAL.Extensions;
 using OrderManagement.DAL.IRepository;
 using OrderManagement.Entity.Models;
@@ -28,13 +29,13 @@ namespace OrderManagement.BLL.Manager
         public async Task<List<OrderViewModel>> GetOrdersAsync()
         {
             var data = await _iOrderRepository.GetOrdersAsync(CancellationToken.None);
-            var pp = _mapper.Map<List<OrderView>, List<OrderViewModel>>(data);
+            var pp = _mapper.Map<List<Order>, List<OrderViewModel>>(data);
             return pp;
         }
         public async Task<OrderViewModel> GetOrderAsync(int key)
         {
             var data = await _iOrderRepository.GetOrderAsync(key);
-            var pp = _mapper.Map<OrderView, OrderViewModel>(data);
+            var pp = _mapper.Map<Order, OrderViewModel>(data);
             return pp;
         }
 
@@ -42,22 +43,22 @@ namespace OrderManagement.BLL.Manager
         public async Task<OrderEditViewModel> GetOrderForEditAsync(int key)
         {
             var data = await _iOrderRepository.GetOrderAsync(key);
-            var pp = _mapper.Map<OrderView, OrderEditViewModel>(data);
+            var pp = _mapper.Map<Order, OrderEditViewModel>(data);
             return pp;
         }
 
         public async Task<List<OrderViewModel>> GetOrdersAsync(bool isActive, CancellationToken cancellationToken = default)
         {
             var data = await _iOrderRepository.GetOrdersAsync(isActive, cancellationToken);
-            var pp = _mapper.Map<List<OrderView>, List<OrderViewModel>>(data);
+            var pp = _mapper.Map<List<Order>, List<OrderViewModel>>(data);
             return pp;
         }
         public async Task<OrderDetailViewModel> GetOrderDetailAsync(int key)
         {
-            var searchModel = await _IQueryDataDictionaryManager.GetQueryDataDictionaryAsync<SearchModel>(nameof(OrderManager));
+            //var searchModel = await _IQueryDataDictionaryManager.GetQueryDataDictionaryAsync<SearchModel>(nameof(OrderManager));
             var data = await _iOrderRepository.GetOrderAsync(key);
-            var pp = _mapper.Map<OrderView, OrderDetailViewModel>(data);
-            pp.RequestedUrl = searchModel.RequestedUrl;
+            var pp = _mapper.Map<Order, OrderDetailViewModel>(data);
+            //pp.RequestedUrl = searchModel.RequestedUrl;
             return pp;
         }
 
@@ -65,7 +66,7 @@ namespace OrderManagement.BLL.Manager
         {
             await _IQueryDataDictionaryManager.SetQueryDataDictionaryAsync(nameof(OrderManager), searchModel);
             var data = await _iOrderRepository.GetOrdersSearchResultAsync(searchModel);
-            var dataMapped = _mapper.Map<IEnumerable<OrderView>, IEnumerable<OrderViewModel>>(data.Value);
+            var dataMapped = _mapper.Map<IEnumerable<Order>, IEnumerable<OrderViewModel>>(data.Value);
             var result = new SearchResult<IEnumerable<OrderViewModel>>(dataMapped, data.TotalRows, data.PageRows, true, "");
             return result;
         }
@@ -115,7 +116,7 @@ namespace OrderManagement.BLL.Manager
         public async Task<OrderDropDownViewModel> GetOrderDropDownViewModelAsync(bool isActive)
         {
             var data = await _iOrderRepository.GetOrdersAsync(isActive);
-            var dataMapped = _mapper.Map<List<OrderView>, List<OrderViewModel>>(data);
+            var dataMapped = _mapper.Map<List<Order>, List<OrderViewModel>>(data);
             var dropDownViewModel = new OrderDropDownViewModel();
             dropDownViewModel.OrderViewModels = dataMapped;
             return dropDownViewModel;
