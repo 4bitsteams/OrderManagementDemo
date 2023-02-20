@@ -1,9 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OrderManagement.BLL.IManager.Common;
-using OrderManagement.BLL.Manager.Common;
+using OrderManagement.BLL.IManager;
+using OrderManagement.BLL.Manager;
 using OrderManagement.DAL.ApplicationDbContext;
+using OrderManagement.DAL.IRepository;
+using OrderManagement.DAL.Repository;
+using OrderManagement.Mapping;
 
 namespace OrderManagement.IOC.DependencyInjection
 {
@@ -17,8 +21,12 @@ namespace OrderManagement.IOC.DependencyInjection
 
             //services.AddScoped<IOrderDbContext>(provider =>provider.GetService<OrderDbContext>());
 
-            services.AddScoped<IQueryDataDictionaryManager, QueryDataDictionaryManager>();
+            services.AddScoped<IOrderManager, OrderManager>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            //services.AddScoped<IMapper, Mapper>();
+            //services.AddScoped<ICacheManager, CacheManager>();
 
+            services.AddAutoMapper(c => c.AddProfile<SetupMapperProfile>(), typeof(SetupMapperProfile));
             return services;
         }
     }

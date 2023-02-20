@@ -2,7 +2,7 @@
 
 namespace OrderManagement.Entity.Models
 {
-    public  class Order : BaseEntity
+    public  class Order 
     {
         [Key]
         public int Id { get; set; }
