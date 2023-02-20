@@ -16,4 +16,9 @@
     <ProjectReference Include="..\OrderManagementViewModel\OrderManagementViewModel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="IManager\Common\" />
+    <Folder Include="Manager\Common\" />
+  </ItemGroup>
+
 </Project>
