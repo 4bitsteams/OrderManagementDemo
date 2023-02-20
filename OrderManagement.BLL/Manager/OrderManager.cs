@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
 using OrderManagement.BLL.IManager;
-using OrderManagement.DAL.Extensions;
 using OrderManagement.DAL.IRepository;
 using OrderManagement.Entity.Models;
-using OrderManagement.Model.Extention;
-using OrderManagementViewModel.ViewModels.Common;
 using OrderManagementViewModel.ViewModels.SalesOrder;
 
 namespace OrderManagement.BLL.Manager

@@ -1,8 +1,4 @@
-﻿using OrderManagement.DAL.Extensions;
-using OrderManagement.Entity.Models;
-using OrderManagement.Model.Extention;
-using OrderManagementViewModel.ViewModels.Common;
-using OrderManagementViewModel.ViewModels.SalesOrder;
+﻿using OrderManagementViewModel.ViewModels.SalesOrder;
 
 namespace OrderManagement.BLL.IManager
 {

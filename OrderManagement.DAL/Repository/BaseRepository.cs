@@ -1,5 +1,4 @@
 ﻿using OrderManagement.DAL.ApplicationDbContext;
-using OrderManagement.DAL.Extensions;
 
 namespace OrderManagement.DAL
 {

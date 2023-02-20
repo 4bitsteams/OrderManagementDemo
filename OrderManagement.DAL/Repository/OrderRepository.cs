@@ -1,10 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OrderManagement.DAL.ApplicationDbContext;
-using OrderManagement.DAL.Extensions;
 using OrderManagement.DAL.IRepository;
 using OrderManagement.Entity.Models;
-using OrderManagementViewModel.ViewModels.Common;
-using OrderManagementViewModel.ViewModels.SalesOrder;
 
 namespace OrderManagement.DAL.Repository
 {

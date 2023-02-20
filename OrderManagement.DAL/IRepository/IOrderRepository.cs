@@ -1,7 +1,4 @@
-﻿using OrderManagement.DAL.Extensions;
-using OrderManagement.Entity.Models;
-using OrderManagementViewModel.ViewModels.Common;
-using OrderManagementViewModel.ViewModels.SalesOrder;
+﻿using OrderManagement.Entity.Models;
 
 namespace OrderManagement.DAL.IRepository
 {
