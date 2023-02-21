@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using OrderManagement.BLL.IManager;
 using OrderManagement.DAL.Extensions;
 using OrderManagement.Entity.Models;
+using OrderManagement.WebApi.Models;
 using OrderManagementViewModel.ViewModels.SalesOrder;
 
 namespace OrderManagement.WebApi.Controllers
@@ -17,19 +18,41 @@ namespace OrderManagement.WebApi.Controllers
             _iOrderManager = iOrderManager;
         }
 
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<OrderViewModel>>> GetAllOrders()
         {
-            return await _iOrderManager.GetOrdersAsync();
+            Result<bool> result = Result.Ok<bool>(false);
+            var orders = new List<OrderViewModel>();
+            try
+            {
+                 orders= await _iOrderManager.GetOrdersAsync();
+            }
+            catch (System.Exception ex)
+            {
+                result = Result.Ok(true, ex.Message);
+            }
+
+            return orders;
+
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<OrderViewModel>> GetOrderInfo(int id)
         {
-            var order = await _iOrderManager.GetOrderAsync(id);
+            Result<bool> result = Result.Ok<bool>(false);
+            var order = new OrderViewModel();
+            try
+            {
+                 order = await _iOrderManager.GetOrderAsync(id);
 
-            if (order == null)
-                return NotFound();
+                if (order == null)
+                    return NotFound();
+            }
+            catch (System.Exception ex)
+            {
+                result = Result.Ok(true, ex.Message);
+            }
 
             return order;
         }
@@ -38,58 +61,66 @@ namespace OrderManagement.WebApi.Controllers
         [HttpPost]
         public async Task<Result> PostOrderInfo(OrderCreateViewModel model)
         {
-            var result=await _iOrderManager.CreateOrderAsync(model);
-            return result;
-
-        }
-
-
-        /*
-        [HttpPut("{id}")]
-
-        public async Task<ActionResult> PutEmployeeInfo(string id, EmployeeInfo employeeInfo)
-        {
-            if (id != employeeInfo.EmpId)
-                return BadRequest();
-
-            _employeeBDContext.Entry(employeeInfo).State = EntityState.Modified;
-
+            Result<bool> result = Result.Ok<bool>(false);
             try
             {
-                await _employeeBDContext.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
+                 result = await _iOrderManager.CreateOrderAsync(model);
+                return result;
+            } 
+            catch (System.Exception ex)
             {
-                if (!EmployeeInfoExists(id))
-                    return NotFound();
-                else
-                    throw;
-            }
-
-            return NoContent();
+                result = Result.Ok(true, ex.Message);
+                return result;
+             }
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEmployeeInfo(string id)
-        {
-            if (_employeeBDContext.EmployeeInfos == null)
-                return NotFound();
 
-            var employeeInfo = await _employeeBDContext.EmployeeInfos.FindAsync(id);
 
-            if (employeeInfo == null)
-                return NotFound();
+        //[HttpPut("{id}")]
 
-            _employeeBDContext.EmployeeInfos.Remove(employeeInfo);
-            await _employeeBDContext.SaveChangesAsync();
+        //public async Task<ActionResult> PutEmployeeInfo(string id, EmployeeInfo employeeInfo)
+        //{
+        //    if (id != employeeInfo.EmpId)
+        //        return BadRequest();
 
-            return NoContent();
-        }
+        //    _employeeBDContext.Entry(employeeInfo).State = EntityState.Modified;
 
-        private bool EmployeeInfoExists(string id)
-        {
-            return (_employeeBDContext.EmployeeInfos?.Any(e => e.EmpId == id)).GetValueOrDefault();
-        }
-        */
+        //    try
+        //    {
+        //        await _employeeBDContext.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!EmployeeInfoExists(id))
+        //            return NotFound();
+        //        else
+        //            throw;
+        //    }
+
+        //    return NoContent();
+        //}
+
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> DeleteEmployeeInfo(string id)
+        //{
+        //    if (_employeeBDContext.EmployeeInfos == null)
+        //        return NotFound();
+
+        //    var employeeInfo = await _employeeBDContext.EmployeeInfos.FindAsync(id);
+
+        //    if (employeeInfo == null)
+        //        return NotFound();
+
+        //    _employeeBDContext.EmployeeInfos.Remove(employeeInfo);
+        //    await _employeeBDContext.SaveChangesAsync();
+
+        //    return NoContent();
+        //}
+
+        //private bool EmployeeInfoExists(string id)
+        //{
+        //    return (_employeeBDContext.EmployeeInfos?.Any(e => e.EmpId == id)).GetValueOrDefault();
+        //}
+
     }
 }
