@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using OrderManagement.BLL.IManager;
+using OrderManagement.DAL.Extensions;
 using OrderManagement.DAL.IRepository;
 using OrderManagement.Entity.Models;
 using OrderManagementViewModel.ViewModels.SalesOrder;
@@ -87,12 +88,12 @@ namespace OrderManagement.BLL.Manager
         //    var returnModel = await GetOrdersDefaultPageViewModelAsync(new SearchModel());
         //    return returnModel;
         //}
-        //public async Task<Result<bool>> CreateOrderAsync(OrderCreateViewModel model, CancellationToken cancellationToken = default)
-        //{
-        //    var dataMapped = _mapper.Map<OrderCreateViewModel, Order>(model);
-        //    var data = await _iOrderRepository.CreateOrderAsync(dataMapped);
-        //    return data;
-        //}
+        public async Task<Result<bool>> CreateOrderAsync(OrderCreateViewModel model, CancellationToken cancellationToken = default)
+        {
+            var dataMapped = _mapper.Map<OrderCreateViewModel, Order>(model);
+            var data = await _iOrderRepository.CreateOrderAsync(dataMapped);
+            return data;
+        }
 
         //public async Task<Result<bool>> UpdateOrderAsync(OrderEditViewModel model)
         //{

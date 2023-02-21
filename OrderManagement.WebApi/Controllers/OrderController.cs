@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OrderManagement.BLL.IManager;
+using OrderManagement.DAL.Extensions;
 using OrderManagement.Entity.Models;
 using OrderManagementViewModel.ViewModels.SalesOrder;
 
@@ -23,7 +24,7 @@ namespace OrderManagement.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<OrderViewModel>> GetEmployeeInfo(int id)
+        public async Task<ActionResult<OrderViewModel>> GetOrderInfo(int id)
         {
             var order = await _iOrderManager.GetOrderAsync(id);
 
@@ -32,5 +33,63 @@ namespace OrderManagement.WebApi.Controllers
 
             return order;
         }
+
+
+        [HttpPost]
+        public async Task<Result> PostOrderInfo(OrderCreateViewModel model)
+        {
+            var result=await _iOrderManager.CreateOrderAsync(model);
+            return result;
+
+        }
+
+
+        /*
+        [HttpPut("{id}")]
+
+        public async Task<ActionResult> PutEmployeeInfo(string id, EmployeeInfo employeeInfo)
+        {
+            if (id != employeeInfo.EmpId)
+                return BadRequest();
+
+            _employeeBDContext.Entry(employeeInfo).State = EntityState.Modified;
+
+            try
+            {
+                await _employeeBDContext.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!EmployeeInfoExists(id))
+                    return NotFound();
+                else
+                    throw;
+            }
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteEmployeeInfo(string id)
+        {
+            if (_employeeBDContext.EmployeeInfos == null)
+                return NotFound();
+
+            var employeeInfo = await _employeeBDContext.EmployeeInfos.FindAsync(id);
+
+            if (employeeInfo == null)
+                return NotFound();
+
+            _employeeBDContext.EmployeeInfos.Remove(employeeInfo);
+            await _employeeBDContext.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool EmployeeInfoExists(string id)
+        {
+            return (_employeeBDContext.EmployeeInfos?.Any(e => e.EmpId == id)).GetValueOrDefault();
+        }
+        */
     }
 }

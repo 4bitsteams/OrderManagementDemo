@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OrderManagement.DAL.ApplicationDbContext;
+using OrderManagement.DAL.Extensions;
 using OrderManagement.DAL.IRepository;
 using OrderManagement.Entity.Models;
 
@@ -108,28 +109,28 @@ namespace OrderManagement.DAL.Repository
         //    return null;
         //}
 
-        //public async Task<Result<bool>> CreateOrderAsync(Order model, CancellationToken cancellationToken = default)
-        //{
-        //    Result<bool> result = Result.Ok<bool>(false);
-        //    int count = 0;
-        //    if (cancellationToken.IsCancellationRequested == false)
-        //    {
-        //        var exists = await _context.Orders.AnyAsync(
-        //            x => x.Name.Trim().ToLower() == model.Name.Trim().ToLower() && x.Id == model.Id && x.IsDeleted != true);
-        //        if (exists == false)
-        //        {
-        //            await _context.Orders.AddAsync(model, cancellationToken);
-        //            count = await _context.SaveChangesAsync(cancellationToken);
-        //            result = Result.Ok(true, "Record has been created successfully.");
-        //        }
-        //        else
-        //        {
-        //            result = Result.Exists(false, false, $"Record already exists for {model.Name}.");
-        //        }
-        //        return result;
-        //    }
-        //    return result;
-        //}
+        public async Task<Result<bool>> CreateOrderAsync(Order model, CancellationToken cancellationToken = default)
+        {
+            Result<bool> result = Result.Ok<bool>(false);
+            int count = 0;
+            if (cancellationToken.IsCancellationRequested == false)
+            {
+                var exists = await _context.Orders.AnyAsync(
+                    x => x.Name.Trim().ToLower() == model.Name.Trim().ToLower() && x.Id == model.Id);
+                if (exists == false)
+                {
+                    await _context.Orders.AddAsync(model, cancellationToken);
+                    count = await _context.SaveChangesAsync(cancellationToken);
+                    result = Result.Ok(true, "Record has been created successfully.");
+                }
+                else
+                {
+                    result = Result.Exists(false, false, $"Record already exists for {model.Name}.");
+                }
+                return result;
+            }
+            return result;
+        }
 
         //public async Task<Result<bool>> UpdateOrderAsync(OrderEditViewModel model, CancellationToken cancellationToken = default)
         //{

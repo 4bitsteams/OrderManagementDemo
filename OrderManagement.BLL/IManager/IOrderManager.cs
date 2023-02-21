@@ -1,4 +1,5 @@
-﻿using OrderManagementViewModel.ViewModels.SalesOrder;
+﻿using OrderManagement.DAL.Extensions;
+using OrderManagementViewModel.ViewModels.SalesOrder;
 
 namespace OrderManagement.BLL.IManager
 {
@@ -13,7 +14,7 @@ namespace OrderManagement.BLL.IManager
         //Task<DefaultPageViewModel<OrderCreateViewModel, SearchModel, SearchResult<IEnumerable<OrderViewModel>>>> GetOrdersDefaultPageViewModelAsync(SearchModel searchModel);
         //Task<DefaultPageViewModel<OrderCreateViewModel, SearchModel, SearchResult<IEnumerable<OrderViewModel>>>> GetOrdersDefaultPageViewModelAfterDeleteAsync();
         //Task<IEnumerable<OrderExportViewModel>> GetOrdersExportResultAsync();
-        //Task<Result<bool>> CreateOrderAsync(OrderCreateViewModel model, CancellationToken cancellationToken = default);
+        Task<Result<bool>> CreateOrderAsync(OrderCreateViewModel model, CancellationToken cancellationToken = default);
         //Task<Result<bool>> DeleteOrderAsync(int key, CancellationToken cancellationToken = default);
         //Task<OrderDropDownViewModel> GetOrderDropDownViewModelAsync(bool isActive);
 
