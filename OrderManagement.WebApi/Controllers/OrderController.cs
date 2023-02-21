@@ -21,5 +21,16 @@ namespace OrderManagement.WebApi.Controllers
         {
             return await _iOrderManager.GetOrdersAsync();
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<OrderViewModel>> GetEmployeeInfo(int id)
+        {
+            var order = await _iOrderManager.GetOrderAsync(id);
+
+            if (order == null)
+                return NotFound();
+
+            return order;
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace OrderManagement.DAL.IRepository
     public interface IOrderRepository
     {
         //IQueryable<Order> GetOrdersQuery();
-        //Task<Order> GetOrderAsync(int key, CancellationToken cancellationToken = default);
+        Task<Order> GetOrderAsync(int key, CancellationToken cancellationToken = default);
         Task<List<Order>> GetOrdersAsync(CancellationToken cancellationToken);
         //Task<List<Order>> GetOrdersAsync(bool isActive, CancellationToken cancellationToken = default);
         //Task<SearchResult<IEnumerable<Order>>> GetOrdersSearchResultAsync(SearchModel searchModel, CancellationToken cancellationToken = default);

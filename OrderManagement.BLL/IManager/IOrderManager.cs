@@ -5,7 +5,7 @@ namespace OrderManagement.BLL.IManager
     public interface IOrderManager
     {
         Task<List<OrderViewModel>> GetOrdersAsync();
-        //Task<OrderViewModel> GetOrderAsync(int key);
+        Task<OrderViewModel> GetOrderAsync(int key);
         //Task<List<OrderViewModel>> GetOrdersAsync(bool isActive, CancellationToken cancellationToken = default);
         //Task<OrderEditViewModel> GetOrderForEditAsync(int key);
         //Task<Result<bool>> UpdateOrderAsync(OrderEditViewModel model);

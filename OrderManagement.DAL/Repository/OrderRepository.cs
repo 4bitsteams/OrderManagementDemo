@@ -46,15 +46,15 @@ namespace OrderManagement.DAL.Repository
         //    return null;
         //}
 
-        //public async Task<Order> GetOrderAsync(int key, CancellationToken cancellationToken)
-        //{
-        //    if (cancellationToken.IsCancellationRequested == false)
-        //    {
-        //        var data = await _context.Orders.FirstOrDefaultAsync(x => x.Id == key && x.IsDeleted != true);
-        //        return data;
-        //    }
-        //    return null;
-        //}
+        public async Task<Order> GetOrderAsync(int key, CancellationToken cancellationToken)
+        {
+            if (cancellationToken.IsCancellationRequested == false)
+            {
+                var data = await _context.Orders.FirstOrDefaultAsync(x => x.Id == key);
+                return data;
+            }
+            return null;
+        }
 
 
         //public async Task<List<Order>> GetOrderModelByOrderIdsAsync(List<int> OrderIds, CancellationToken cancellationToken = default)
@@ -168,7 +168,7 @@ namespace OrderManagement.DAL.Repository
         //            var order = _context.Orders.Remove(exists);
         //            if (order != null)
         //                Result.Ok(true, "Record Deleted SuccessFull.");
-                        
+
         //        }
         //        else
         //        {

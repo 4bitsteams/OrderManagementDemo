@@ -23,12 +23,12 @@ namespace OrderManagement.BLL.Manager
             var pp = _mapper.Map<List<Order>, List<OrderViewModel>>(data);
             return pp;
         }
-        //public async Task<OrderViewModel> GetOrderAsync(int key)
-        //{
-        //    var data = await _iOrderRepository.GetOrderAsync(key);
-        //    var pp = _mapper.Map<Order, OrderViewModel>(data);
-        //    return pp;
-        //}
+        public async Task<OrderViewModel> GetOrderAsync(int key)
+        {
+            var data = await _iOrderRepository.GetOrderAsync(key);
+            var pp = _mapper.Map<Order, OrderViewModel>(data);
+            return pp;
+        }
 
 
         //public async Task<OrderEditViewModel> GetOrderForEditAsync(int key)
